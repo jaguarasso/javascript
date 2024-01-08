@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom</title>
+    <style>
+
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        main{
+            margin: auto;
+            background-color: lightblue;
+            max-width: 800px;
+        }
+
+        body{
+            background-color: white;
+            color: white;
+            font-family: sans-serif;
+            font-size: larger;
+        }
+
+        p>strong{
+            color: darkblue;
+        }
+
+        #img{
+            margin-top: 10px;
+            margin-left: 20px;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>iniciando estudos com dom </h1>
+        <p>aqui vai o resultado</p>
+        <p>aprendedno a usar o <strong>dom</strong> </p>
+        <div id="msg">clique em mim </div>
+        <div>
+            <img src="arvore dom.png" alt="" id="img">
+        </div>
+    </main>
+    <script>
+
+        //dom document object model
+       var corpo = window.document.body
+       var p1 = window.document.getElementsByTagName('p')[1]
+       document.write(p1.innerHTML)
+    /*
+       var d = window.document.getElementById('msg')
+       d.style.background = 'green'
+       d.innerText = 'estou aguardando'
+       // window.document.getElementById('msg').innerHTML = 'ola'
+       */
+
+       var d = document.querySelector('div#msg')
+       d.style.background = 'grey'
+
+
+    </script>
+</body>
+</html>
