@@ -13,9 +13,42 @@
         body{
             background-color: black;
         }
+
+        header{
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 40px;
+        }
+
+        main{
+            margin: auto;
+            background-color: lightgray;
+            max-width: 800px;
+            max-height: 900px;
+            padding-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        main>div{
+            margin-left: auto;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #imag{
+            border-radius: 100%;
+        }
+
+        footer{
+            color: white;
+            font-variant: small-caps;
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
-<body>
+<body onload="carregar()">
     <header>
         <h1>Hora do dia</h1>
     </header>
@@ -23,15 +56,47 @@
     <main>
         <div id="res"></div>
 
-        <div id="img"> 
-            <img src="" alt="">
+        <div id="foto"> 
+            <img id="imag" src="imagens/supra.jpg" alt="" >
         </div>
 
     </main>
 
     <footer>
 
+        <p>jaguarasso</p>
 
     </footer>
+
+    <script>
+
+        
+
+        function carregar(){
+            var res = window.document.querySelector('div#res')
+            //var res = window.document.getElementById('res')
+            var img =  window.document.querySelector('img#imag')
+            var data = new Date()
+            var hora = data.getHours()
+
+            res.innerHTML = `agora sao ${hora} horas`
+            
+            if(hora >= 0 && hora < 12){
+                //bom dia 
+                img.src = 'imagens/fotomanha.jpg'
+            }
+            else if( hora >= 12 && hora < 18){
+                //boa tarde
+                img.src = 'imagens/nutrire.PNG'
+            }
+            else{
+                //boa noite
+                img.src = 'imagens/nutrire.PNG'
+            }
+
+        }
+
+
+    </script>
 </body>
 </html>
