@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>estrangeiro</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background-color: darkgreen;
+            color: white;
+        }
+
+        header{
+            background-color: black;
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        main{
+            background-color: rgb(17, 179, 17);
+            max-width: 800px;
+            height: 100vh;
+            margin: auto;
+        }
+
+        main>h2{
+            padding: 5px;
+        }
+
+        main>article{
+            padding: 20px;
+
+        }
+
+        footer{
+            background-color: black;
+            text-align: center;
+            font-variant: small-caps;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>estrangeiro ou nacional ?</h1>
+    </header>
+
+    <main>
+        <h2>
+            voce e estrangeiro ou natural brasileiro ?
+        </h2>
+        <article>
+
+            país : <input type="text" name="naci" id="naci">
+            <input type="button" value="verificar" onclick="verificar()">
+            <div id="res"></div>
+        
+        </article>
+    
+    </main>
+
+     <footer>
+        <p>site desenvolvido por jaguarasso </p>
+     </footer>
+
+
+     <script>
+        
+        function verificar(){
+            var nat = window.document.querySelector('input#naci')
+            var naci = nat.value 
+            var res = window.document.querySelector('div#res')
+            var nacional = 'brasil' || 'Brasil'
+
+            if(naci === nacional){
+                 res.innerHTML = `sua nacionalidade é brasileiro país de origem: ${naci}`             
+            }
+            else{  
+                res.innerHTML = `estrangeiro, país de origem: ${naci}`}
+
+        }
+
+     </script>
+</body>
+</html>
