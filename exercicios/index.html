@@ -11,7 +11,7 @@
         }
 
         body{
-            background-color: black;
+            background-color: rgb(37, 37, 54);
         }
 
         header{
@@ -28,27 +28,36 @@
             max-height: 900px;
             padding-bottom: 20px;
             border-radius: 10px;
+            box-shadow: 5px 5px 10px black;
         }
 
         main>div{
+
             margin-left: auto;
             text-align: center;
             margin-bottom: 20px;
         }
 
+        #res{
+            margin-top: 10px;
+            padding-top: 20px;
+        }
+
         #imag{
             border-radius: 100%;
+            max-width: 400px;
+            max-height: 400px;
         }
 
         footer{
             color: white;
             font-variant: small-caps;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 20px;            
         }
     </style>
 </head>
-<body onload="carregar()">
+<body onload="carregar()" id="area">
     <header>
         <h1>Hora do dia</h1>
     </header>
@@ -78,20 +87,26 @@
             var img =  window.document.querySelector('img#imag')
             var data = new Date()
             var hora = data.getHours()
+            var a = window.document.querySelector('body#area')
+            a.addEventListener('onload', onload)
 
             res.innerHTML = `agora sao ${hora} horas`
             
             if(hora >= 0 && hora < 12){
                 //bom dia 
                 img.src = 'imagens/fotomanha.jpg'
+                a.style.background = 'lightblue'
+                
             }
             else if( hora >= 12 && hora < 18){
                 //boa tarde
                 img.src = 'imagens/nutrire.PNG'
+                a.style.background = 'lightsteelblue'
             }
             else{
                 //boa noite
-                img.src = 'imagens/nutrire.PNG'
+                img.src = 'imagens/supra.jpg'
+                a.style.background = 'lightslategray'
             }
 
         }
