@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculador de idade</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background-color: lightslategrey;
+        }
+
+        header{
+            text-align: center;
+            margin: 20px;
+            font-variant: small-caps;
+            color: white;
+        }
+        #foto{
+            text-align: center;
+        }
+        #img{
+            
+            margin: auto;
+            width: 150px;
+            max-width: 300px;
+            border-radius: 50%;
+        }
+
+        main{
+            margin: auto;
+            max-width: 700px;
+            background-color: aliceblue;
+            border-radius: 10px;
+            box-shadow: 0px 2px 27px rgba(255, 255, 255, 0.473);
+        }
+
+        main>article{
+            margin-left: 20px;
+            padding: 20px;
+            
+        }
+
+        #res{
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        main>article>div>p{
+            margin-bottom: 10px;
+        }
+
+        footer{
+            padding-top: 20px;
+            text-align: center;
+            color: white;
+            font-variant: small-caps;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>churumbado</h1>
+    </header>
+    <main id="area">
+        <article>
+
+            <div>
+
+               <p>Ano de nascimento:<input type="number" name="ano" id="ano" min="0"></p> 
+
+               <p>sexo:<input type="radio" name="radsex" id="masc">
+                <label for="masc">masculino </label>
+                <input type="radio" name="radsex" id="fem"> 
+                <label for="fem">feminino</label> 
+                <input type="radio" name="radsex" id="out" checked> <label for="out">outros</label>
+               </p>
+
+               <input id="veri" type="button" value="verificar" onclick="verificar()">
+
+            </div>
+
+            <div id="res">
+                <p>preencha os campos e clique em "verificar" para realizarmos os calculos</p>
+            </div>
+
+            <div id="foto">
+                <img id="img">
+            </div>
+
+        </article>
+
+        
+    </main>
+
+    <footer>
+        <p>jagurasso</p>
+    </footer>
+
+</body>
+
+    <script>
+
+        function trocaCor(){
+            
+        }
+
+        function verificar(){
+            var ano1 = window.document.querySelector('input#ano')
+            var ano = Number(ano1.value)
+            var agora =  new Date()
+            var ano2 = agora.getFullYear()
+            var res = window.document.querySelector('div#res')
+            var img =  window.document.querySelector('img#img')
+                   
+           
+
+            if(ano == 0 || ano > ano2){
+                window.alert('verifique se colocou um ano valido')
+            }else{
+                var fsex = window.document.getElementsByName('radsex')
+                var idade = ano2 - ano
+                var sexo = ''
+
+                if(fsex[0].checked){
+                    sexo = 'homem'
+
+                    if(idade >= 0 && idade<10){
+                        img.src = 'imagens/m1.jpg'
+                    
+                        
+                    }
+                    else if(idade >=10 && idade <18){
+                        img.src = 'imagens/m2.jpg'
+                        
+                    }
+                    else if(idade >= 18 && idade <28){
+                        img.src = 'imagens/m3.jpg'
+                    }
+                    else if(idade >=28 && idade <60){
+                        img.src = 'imagens/m4.jpg'
+                    }
+                    else{
+                        img.src = 'imagens/m5.jpg'
+                    }
+
+                }
+                
+                else if(fsex[1].checked){
+                    sexo = 'mulher'
+
+                    if(idade >= 0 && idade<10){
+                        img.src = 'imagens/f1.jpg'
+                    }
+                    else if(idade >=10 && idade <18){
+                        img.src = 'imagens/f2.jpg'
+                    }
+                    else if(idade >= 18 && idade <28){
+                        img.src = 'imagens/f3.jpg'
+                    }
+                    else if(idade >=28 && idade <60){
+                        img.src = 'imagens/f4.jpg'
+                    }
+                    else{
+                        img.src = 'imagens/f5.jpg'
+                    }
+                }
+                else{
+                    sexo = 'gambiarra do diabo'
+
+                    if(idade >= 0 && idade<10){
+                        img.src= 'imagens/b1.png'
+                    }
+                    else if(idade >=10 && idade <18){
+                        img.src= 'imagens/b1.png'
+                    }
+                    else if(idade >= 18 && idade <28){
+                        img.src= 'imagens/b1.png'
+                    }
+                    else if(idade >=28 && idade <60){
+                        img.src= 'imagens/b1.png'
+                    }
+                    else{
+                        img.src= 'imagens/b1.png'
+                    }
+
+                }
+                res.innerHTML = `detectamos ${sexo} com ${idade} anos`
+                //res.appendChild(img)
+            }
+            
+        }
+        // var img = document.createElement('img')
+        // img.setAttribute('id', 'foto')
+
+        // img.setAttribute('src', 'imagens/foto.jpg')
+    </script>
+</html>
