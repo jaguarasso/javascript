@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contador com passos</title>
+    <style>
+
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body{
+            background-color: lightsteelblue;
+        }
+
+        header{
+            text-align: center;
+            color: white;
+            margin: 20px;
+            text-shadow: 0px 0px 2px black;
+           
+        }
+
+        main{
+            
+            margin: auto;
+            background-color: whitesmoke;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.596);
+        }
+        article>div{
+            padding: 10px;
+        }
+
+        div>p{
+            margin-bottom: 20px;
+        }
+        footer{
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+            text-shadow: 0px 0px 2px black;
+            font-variant: small-caps;
+            font-size: 15pt;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>contador com passos</h1>
+    </header>
+    <main>
+        <article>
+            <div>
+                <p><label for="n1">insira um numero de inicio: </label><input type="number" name="nuemro1" id="n1"></p>
+                <p><label for="n2">insira o numero do fim: </label><input type="number" name="numero2" id="n2"></p>
+                <p><label for="passo">insira os passos: </label> <input type="number" name="passo" id="passo"></p>
+                <input type="button" value="calcular " onclick="calcular()">
+            </div>
+            
+            <div id="res">
+
+            </div>
+        </article>
+       
+    </main>
+    <footer>
+        <p>jaguarasso</p>
+    </footer>
+</body>
+
+    <script>
+
+        function calcular(){
+            var n11 = window.document.getElementById('n1')
+            
+            var n22 = window.document.getElementById('n2')
+            
+            var pa = window.document.getElementById('passo')
+            
+            var res = window.document.getElementById('res')
+
+          if(n11.value.length == 0 || n22.value.length == 0 || pa.value.length == 0){
+                window.alert('verifique os campos para nao deixar nenhum vazio')
+            }else{
+                res.innerHTML = 'contando: '
+                let n1 = Number(n11.value)
+                let n2 = Number(n22.value)
+                let p = Number(pa.value)
+
+                if(p<=0){
+                    window.alert('passo 0 e invalido, considerando passo 1')
+                    p=1
+                }
+
+                if(n1<n2){
+                    //contagem crescente
+                    for(let c = n1; c <= n2; c += p){
+                    res.innerHTML += `<${c}` 
+                    }
+                }else{
+                    //contagem regressiva
+                    for(let c = n1; c >= n2; c -= p){
+                    res.innerHTML += `<${c}` 
+                    }
+                }
+            }
+        }
+
+    </script>
+</html>

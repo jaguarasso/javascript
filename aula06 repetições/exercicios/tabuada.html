@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabuada</title>
+    <style>
+
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body{
+            background-color: lightsteelblue;
+        }
+
+        header{
+            text-align: center;
+            color: white;
+            margin: 20px;
+            text-shadow: 0px 0px 2px black;
+           
+        }
+
+        main{
+            
+            margin: auto;
+            background-color: whitesmoke;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.596);
+        }
+        article>div{
+            padding: 10px;
+        }
+
+        div>p{
+            margin-bottom: 20px;
+        }
+        footer{
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+            text-shadow: 0px 0px 2px black;
+            font-variant: small-caps;
+            font-size: 15pt;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>tabuada</h1>
+    </header>
+
+    <main>
+        <article>
+            <div>
+                <p><label for="n1">insira um numero: </label><input type="number" name="numero" id="n1"></p>
+                <p><input type="button" value="gerar tabuada" onclick="calcular()"></p>
+            </div>
+            <div>
+                <select name="tabuada" id="seltab" size="10">
+                    <option>digite um numero acima</option>
+                </select>
+            </div>
+        </article>
+        
+    </main>
+
+    <footer>
+        <p>jaguarasso</p>
+    </footer>
+
+</body>
+    <script>
+        function calcular(){
+            let num = document.getElementById('n1')
+            let tab = document.getElementById('seltab')
+
+            if(num.value.length == 0){
+                window.alert('por favor insira um numero!')
+            }else{
+                let n = Number(num.value)
+                let c = 1
+                tab.innerHTML = ''
+
+                while(c <= 10){
+                    let item = document.createElement('option')
+                    item.text = `${n} x ${c} = ${n*c}`
+                    tab.appendChild(item)
+                    c++
+                }
+            }
+
+        }
+    </script>
+</html>
