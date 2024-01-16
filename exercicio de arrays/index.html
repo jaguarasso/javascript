@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>numeros</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            background-color: darkslategrey;
+        }
+        header{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-variant: small-caps;
+            color: white;
+            text-align: center;
+        }
+        main{
+            margin: auto;
+            border-radius: 10px;
+            background-color: rgba(245, 245, 245, 0.541);
+            box-shadow: 2px 0px 10px  rgba(0, 0, 0, 0.521);
+            max-width: 800px;
+        }
+
+        article>div{
+            margin: 10px;
+            padding: 10px;
+            color: white;
+        }
+
+        footer{
+            text-align: center;
+            font-variant: small-caps;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>analizador de numeros</h1>
+    </header>
+    <main>
+        <article>
+            <div>
+                <label for="n1">numero entre 1 e 100</label>
+                 <input type="number" name="numero1" id="n1" maxlength="100">
+                 <input type="button" value="adicionar" onclick="adiciona()">
+                
+                </div>
+            <div>
+                <select name="mostra" id="seltab" size="10"></select><br>
+                <input type="button" value="verificar" onclick="verificar()">
+            </div>
+            <div id="res">
+
+            </div>
+        </article>
+    </main>
+    <footer>
+        <p>jaguarasso</p>
+    </footer>
+
+    <script>
+
+            var n1 = document.getElementById('n1')
+           
+            var lista = document.getElementById('seltab') 
+            var res = document.getElementById('res')
+            let valores = []
+           
+        function isNumero(n){
+            if(Number(n) >=1 && Number(n)<=100){
+                return true
+            }else{
+                return false
+            }
+        }
+
+        function inLista(n, l){
+            if (l.indexOf(Number(n)) != -1){
+                return true
+            }else{
+                return false
+            }
+        }
+
+        function adiciona(){
+           
+           if(isNumero(n1.value) && !inLista(n1.value, valores)){
+                valores.push(Number(n1.value))
+                let item = document.createElement('option')
+                item.text = `valor ${n1.value} adicionado`
+                lista.appendChild(item)
+                res.innerHTML = ''
+
+           }else{
+            window.alert('valor invalido ou ja adicionado na lista')
+           }
+           n1.value = ''
+           n1.focus()
+        }
+
+        function verificar(){
+            if(valores.length == 0){
+                window.alert('adicione valores antes de verificar!')
+            }else{
+                let tot = valores.length
+                let maior = valores[0]
+                let menor = valores[0]
+                let soma =0
+                let media=0
+                for(let pos in valores) {
+                    soma += valores[pos]
+                    
+                    if(valores[pos] > maior)
+                        maior = valores[pos]
+                    if(valores[pos] < menor)
+                        menor =  valores[pos]
+                    
+                }
+            media = soma / tot
+            res.innerHTML= ''
+            res.innerHTML += `<p>ao todo temos ${tot} numeros cadastrados.</p>`
+            res.innerHTML += `<p>o maior valor é: ${maior}</p>`
+            res.innerHTML += `<p>o menor valor é: ${menor}</p>`
+            res.innerHTML += `<p>a soma de todos os numeros é:${soma}</p>`
+            res.innerHTML += `<p>a media dos elementos é:${media}</p>`
+              
+               // valores.sort()
+
+            }
+
+          
+
+            //ao todo temos n numeros cadastrados ok
+            //o maior valor informado foi nmaior 
+            //o menor valor informado foi nmenor
+            //somando todos os valores temos ntodos
+            //a media dos valores digitados temos nmedia 
+        }
+
+    </script>
+
+
+</body>
+</html>
